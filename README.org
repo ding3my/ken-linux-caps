@@ -1,0 +1,86 @@
+* Intro
+* Ops
+** TODO Installation
+repo_url="https://github.com/ding3my/ken-linux-caps.git"
+repo_name="$(basename "${repo_url%.*}")"
+program_dir="$HOME/opt"
+install_dir="$program_dir/$repo_name"
+cmd="mkdir --parents \"$install_dir\"; git clone \"$repo_url\" \"$install_dir\";"
+printf "%s\n" "$cmd"
+
+eval "$cmd"
+
+# append to your
+printf "export PATH=\"\$PATH:$install_dir/src/main\"\n"
+* User
+** DONE 如何linux转换caps长按为left ctrl？
+   CLOSED: [2017-08-12 Sat 18:30]
+？高效率使用emacs。
+#+BEGIN_SRC  
+caps
+#+END_SRC
+** DONE 如何linux转换caps单击为esc？
+   CLOSED: [2017-08-12 Sat 18:30]
+？高效率使用emacs evil或vim。
+#+BEGIN_SRC  
+caps
+#+END_SRC
+** 如何linux转换right alt长按为left ctrl？
+？使用右手大拇指缓解左手小指压力。
+#+BEGIN_SRC  
+caps
+#+END_SRC
+** 如何linux转换right alt单击为esc？
+？使用右手大拇指缓解左手小指压力。
+#+BEGIN_SRC  
+caps
+#+END_SRC
+* Dev
+** DONE 如何linux nohup重定向nohup.out的输出？
+   CLOSED: [2017-08-12 Sat 18:28]
+？解决测试nohup时输出文件污染git repo（ken-linux-caps）。
+
+#+BEGIN_SRC  
+https://www.google.com/search?q=nohup+redirect
+
+nohup myprogram >myprogram.out 2>myprogram.err
+nohup myprogram >myprogram.out 2>&1
+
+nohup echo 1 2>&1 # 产出nohup.out，无效
+nohup echo 1 >/dev/null 2>&1 # 有效
+nohup echo 1 >/dev/null # 有效
+nohup echo 1 1>/dev/null # 有效
+#+END_SRC
+
+2>&1表示重定向错误到标准输出（1）。
+
+** DONE 什么linux中2>&1的含义？
+   CLOSED: [2017-08-12 Sat 18:28]
+？解决测试nohup时输出文件污染git repo（ken-linux-caps）。
+#+BEGIN_SRC  
+鸟哥的Linux私房菜 基础学习篇 3ed p328
+
+https://www.gnu.org/software/bash/manual/bash.html#Redirecting-Standard-Output-and-Standard-Error
+3.6.4 Redirecting Standard Output and Standard Error
+>&word等价>word 2>&1
+
+https://www.google.com/search?q=bash+error+redirect+mean&oq=bash+error+redirect+mean
+https://stackoverflow.com/questions/818255/in-the-shell-what-does-21-mean
+Here is one way to remember this construct (although it is not entirely accurate): at first, 2>1 may look like a good way to redirect stderr to stdout. However, it will actually be interpreted as "redirect stderr to a file named 1". & indicates that what follows is a file descriptor and not a filename. So the construct becomes: 2>&1.
+#+END_SRC
+
+2>&1表示重定向错误到标准输出（1）。
+
+** TODO 为什么linux bash启动emacs&后关闭bash terminal，emacs会退出，而使用脚本启动emacs后，关闭terminal而不会？
+？解决使用nohup还是使用&命令开发代码。
+
+#+BEGIN_SRC  
+https://segmentfault.com/q/1010000010628714?_ea=2357472
+https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/
+
+新提交的进程的父 ID（PPID）为1（init 进程的 PID），并不是当前终端的进程 ID。因此并不属于当前终端的子进程，从而也就不会受到当前终端的 HUP 信号的影响了。
+#+END_SRC
+
+(sleep 1000 &)和nohup sleep 1000 &结果类似，还是使用nohup，便于统一理解。
+
+缺少官方解释。

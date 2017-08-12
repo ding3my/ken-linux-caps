@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+killall xcape;
+
+# caps
+setxkbmap -option 'caps:ctrl_modifier'# 不需要nohup
+nohup xcape -e 'Caps_Lock=Escape' -t 200 1>/dev/null &
+
+nohup xcape -e 'Control_Lock=Escape' -t 200 1>/dev/null &
+nohup xcape -e 'Alt_L=Escape' -t 200 1>/dev/null &
+
+# alt
+setxkbmap -option 'ctrl:ralt_ctrl'
+nohup xcape -e 'Alt_R=Escape' -t 200 1>/dev/null & # 无效，和ctrl:ralt_lctrl冲突
