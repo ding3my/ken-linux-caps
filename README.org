@@ -1,6 +1,7 @@
 * Intro
 * Ops
 ** TODO Installation
+#+BEGIN_SRC  
 repo_url="https://github.com/ding3my/ken-linux-caps.git"
 repo_name="$(basename "${repo_url%.*}")"
 program_dir="$HOME/opt"
@@ -12,6 +13,7 @@ eval "$cmd"
 
 # append to your
 printf "export PATH=\"\$PATH:$install_dir/src/main\"\n"
+#+END_SRC
 * User
 ** DONE 如何linux转换caps长按为left ctrl？
    CLOSED: [2017-08-12 Sat 18:30]
