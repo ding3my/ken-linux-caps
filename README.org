@@ -11,7 +11,7 @@ printf "%s\n" "$cmd"
 
 eval "$cmd"
 
-# append to your
+# append to your shell profile file
 printf "export PATH=\"\$PATH:$install_dir/src/main\"\n"
 #+END_SRC
 * User
