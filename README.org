@@ -15,7 +15,13 @@ sudo bash -c "eval $cmd"
 # Append to your shell profile file
 printf "export PATH=\"\$PATH:$install_dir/src/main\"\n"
 
+#+END_SRC
+** Updating
+#+BEGIN_SRC  
 # Updating
+repo_url="https://github.com/ding3my/ken-linux-caps.git"
+repo_name="$(basename "${repo_url%.*}")"
+install_dir="/opt/$repo_name"
 sudo git -C "$install_dir" pull
 #+END_SRC
 * User
