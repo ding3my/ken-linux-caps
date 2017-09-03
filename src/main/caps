@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 
-killall xcape;
+for ((i=1; i<=8; i++))
+do
+	killall xcape;
 
-# caps
-setxkbmap -option 'caps:ctrl_modifier' # 不需要nohup
-nohup xcape -e 'Caps_Lock=Escape' -t 200 1>/dev/null &
+	# caps
+	setxkbmap -option 'caps:ctrl_modifier' # 不需要nohup
 
-nohup xcape -e 'Control_L=Escape' -t 200 1>/dev/null &
-nohup xcape -e 'Alt_L=Escape' -t 200 1>/dev/null &
+	nohup xcape -e 'Caps_Lock=Escape' -t 200 1>/dev/null &
 
-# alt
-setxkbmap -option 'ctrl:ralt_ctrl'
-nohup xcape -e 'Alt_R=Escape' -t 200 1>/dev/null & # 无效，和ctrl:ralt_lctrl冲突
+	nohup xcape -e 'Control_L=Escape' -t 200 1>/dev/null &
+	# nohup xcape -e 'Alt_L=Escape' -t 200 1>/dev/null &
+
+	# alt
+	setxkbmap -option 'ctrl:ralt_rctrl'
+	# nohup xcape -e 'Alt_R=Escape' -t 200 1>/dev/null & # 无效，和ctrl:ralt_rctrl冲突
+	sleep 1
+done
+

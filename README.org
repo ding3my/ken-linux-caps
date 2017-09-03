@@ -4,12 +4,13 @@
 #+BEGIN_SRC  
 repo_url="https://github.com/ding3my/ken-linux-caps.git"
 repo_name="$(basename "${repo_url%.*}")"
-program_dir="$HOME/opt"
-install_dir="$program_dir/$repo_name"
-cmd="mkdir --parents \"$install_dir\"; git clone \"$repo_url\" \"$install_dir\";"
+install_dir="/opt/$repo_name"
+cmd=""
+cmd="$cmd mkdir --parents \"$install_dir\" ;"
+cmd="$cmd git clone \"$repo_url\" \"$install_dir\" ;"
 printf "%s\n" "$cmd"
 
-eval "$cmd"
+sudo bash -c "eval $cmd"
 
 # append to your shell profile file
 printf "export PATH=\"\$PATH:$install_dir/src/main\"\n"
