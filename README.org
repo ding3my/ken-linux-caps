@@ -1,4 +1,5 @@
 * Intro
+Map caps to ctrl and esc.
 * Ops
 ** TODO Installation
 #+BEGIN_SRC  
